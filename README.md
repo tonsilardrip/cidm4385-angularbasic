@@ -1,6 +1,6 @@
 # Angular Basic CIDM 4385 Spring 17'
 
-This is just the first homework that we had to do. We had to do a temp conversion. Data entry for phone numbers and. Accepting login information. 
+This is just the first homework that we had to do. We had to do a temp conversion. Data entry for phone numbers, and Accepting login information. 
 
 ## Getting Started
 These are the projects that are on my Cloud9
