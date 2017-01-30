@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Celsius To Fahrenheit Converter</title>
+    </head>
+    <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular-animate.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.filter('singleDecimal', function ($filter) {
+            return function (input) {
+                if (isNaN(input)) return input;
+                return Math.round(input * 10) / 10;
+            };
+        });
+        app.filter('setDecimal', function ($filter) {
+            return function (input, places) {
+                if (isNaN(input)) return input;
+            var factor = "1" + Array(+(places > 0 && places + 1)).join("0");
+            return Math.round(input * factor) / factor;
+            };
+            });
+            app.controller('Ctrl', function ($scope) {
+            $scope.val = 1.56;
+            });
+    </script>
+    <style type="text/css">
+        h3{
+            color:blue;
+            text-align:center;
+        }
+        p{
+            
+            text-align:center;
+        }
+    </style>
+    
+    <body>
+        <br>
+            <h3> Celsius To Fahrenheit Converter in Angular</h3>
+            <div ng-app="myApp">
+                <p>Enter temperature in Celsius :
+                <input type="text" ng-model="temp" maxlength="5" size="3"/>
+                </p><br>
+                <p>The temperature in celsius is {{ temp }}&degC its equivalent to fahrenheit is {{ (temp * 9/5) + 32 | setDecimal:1}}&degF.</p>
+            </div>
+    </body>
+</html>
