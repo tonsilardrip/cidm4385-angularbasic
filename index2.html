@@ -20,7 +20,7 @@
                     
                     cc.add = function add(){
                         cc.people.push(
-                            {name:'xxx', phones:['xxx-xxx-xxxx', 'xxx-xxx-xxxx']}
+                            {name: cc.name, phones:[cc.phoneOne, cc.phoneTwo]}
                         );
                     }                    
                 }
@@ -65,6 +65,9 @@
         </style>
     </head>
     <body ng-controller="ContactsController as cc">
+        name: <input type="text" ng-model='cc.name'/>
+        first phone: <input type="text" ng-model='cc.phoneOne'/>
+        second phone: <input type="text" ng-model='cc.phoneTwo'/> <br>
         <button ng-click="cc.add()">Add</button>
         <div ng-repeat="person in cc.people" ng-controller="PersonController as pc"
              ng-class-odd="'gray'" class="person">

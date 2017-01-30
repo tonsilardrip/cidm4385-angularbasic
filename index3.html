@@ -19,7 +19,7 @@
                         mc.user = name;                  
                     });
                     $scope.$on('logout', function(event, name){
-                        mc.user = null;                  
+                        mc.user = null;       
                     });                    
                 }
             );
@@ -27,11 +27,21 @@
             myModule.controller('LoginController', 
                 function ($scope) {
                     var lc = this;
-
                     lc.name = '';
-                    
+                    lc.names = ['chase', 'amanda', 'kyler', 'brycen', 'lindi'];
                     lc.login = function login(){
-                        $scope.$emit('login', lc.name);
+                        var x = 0;
+                        lc.check = true;
+                        for(var i = 0; i < lc.names.length; i++){
+                            if (lc.names[i] == lc.name){
+                                $scope.$emit('login', lc.name);
+                            } else {
+                              x++;  
+                            }
+                        }
+                        if(x == lc.names.length){
+                            lc.check = false;
+                        }
                     }
                     
                     lc.logout = function logout(){
@@ -66,8 +76,9 @@
     <body ng-controller="MainController as mc">
         <div ng-show="mc.user">{{mc.user}} is logged in</div>
         <div ng-hide="mc.user">No User logged in</div>
-        <div ng-controller="LoginController as lc" 
+        <div ng-controller="LoginController as lc"
              style="float:right; padding:5px;border:1px solid #ccc; background:#eee;">
+            <div ng-if='lc.check == false' style='color:#FF0000'>* incorrect username.</div>
             <div ng-hide="mc.user">
                 Login: <input ng-model="lc.name">
             </div>
